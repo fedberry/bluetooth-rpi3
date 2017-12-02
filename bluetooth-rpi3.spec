@@ -4,7 +4,7 @@
 %global __os_install_post %{nil}
 
 Name:       bluetooth-rpi3
-Version:    0.1
+Version:    1.0
 Release:    1%{?dist}
 Summary:    Service and udev rule for Raspberry Pi 3 bluetooth
 Group:      System Environment/Kernel
@@ -18,7 +18,7 @@ BuildRequires: systemd
 Requires(post): systemd
 Requires(preun): systemd
 Requires(postun): systemd
-Requires:   bluez >= 5.39-2
+Requires:   bluez
 Requires:   bcm43438-firmware
 
 
@@ -27,7 +27,7 @@ Service and udev rule for Raspberry Pi 3 bluetooth support
 
 %prep
 %setup -c -T
-cp -a %{SOURCE0} %{SOURCE1} .
+cp -a %{sources} .
 
 %build
 
@@ -64,5 +64,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Sat Dec 02 2017 Vaughan <devel at agrez dot net> - 1.0-1
+- Minor spec cleanups
+- Bump release
+
 * Wed May 18 2016 Vaughan <devel at agrez dot net> - 0.1-1
 - Initial package
